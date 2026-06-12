@@ -21,35 +21,36 @@ export default function About() {
         </p>
       </div>
 
-      {/* Stats row */}
-      <div className="flex gap-6 pt-1">
-        {[
-          { value: "30+", label: "projects shipped" },
-          { value: "3yr",  label: "in business" },
-          { value: "99",   label: "lighthouse avg" },
-        ].map((s) => (
-          <div key={s.label}>
-            <p className="text-[14px] font-bold">{s.value}</p>
-            <p className="text-[13px] text-[#888]">{s.label}</p>
-          </div>
-        ))}
-      </div>
+      {/* Stats + CTAs on same row */}
+      <div className="flex items-end justify-between gap-4 pt-1">
+        <div className="flex gap-6">
+          {[
+            { value: "30+", label: "projects shipped" },
+            { value: "3yr",  label: "in business" },
+            { value: "99",   label: "lighthouse avg" },
+          ].map((s) => (
+            <div key={s.label}>
+              <p className="text-[14px] font-bold">{s.value}</p>
+              <p className="text-[13px] text-[#888]">{s.label}</p>
+            </div>
+          ))}
+        </div>
 
-      {/* CTA links */}
-      <div className="flex gap-3 pt-1">
-        <a
-          href="#contact"
-          className="text-[14px] px-3 py-1 rounded-sm text-white transition-colors"
-          style={{ background: "#1a5c27" }}
-        >
-          book a call ↗
-        </a>
-        <a
-          href="#works"
-          className="text-[14px] text-[#888] hover:text-[#1c1c1c] transition-colors py-1"
-        >
-          see works →
-        </a>
+        <div className="flex gap-3 items-center">
+          <a
+            href="#contact"
+            className="text-[14px] px-3 py-1 rounded-sm text-white transition-colors"
+            style={{ background: "#1a5c27" }}
+          >
+            book a call ↗
+          </a>
+          <a
+            href="#works"
+            className="text-[14px] text-[#888] hover:text-[#1c1c1c] transition-colors py-1"
+          >
+            see works →
+          </a>
+        </div>
       </div>
     </section>
   );

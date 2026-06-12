@@ -11,7 +11,7 @@ const team = [
     handle: "@joydeepsignha",
     role: "Full Stack Developer · Blockchain",
     location: "India",
-    image: "https://ik.imagekit.io/shutttr/Team/joydeep.jpg",
+    image: "https://ik.imagekit.io/shutttr/Team/joydeep.gif",
   },
   {
     name: "Soumya",

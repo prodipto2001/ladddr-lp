@@ -1,3 +1,5 @@
+import LazyVideo from "./lazy-video";
+
 const works = [
   {
     id: "foliox",
@@ -80,14 +82,7 @@ export default function WorksSection() {
 
             {/* Video preview */}
             <div className="border border-[#dbd9d1] rounded-sm overflow-hidden bg-[#f0eeea] aspect-video relative">
-              <video
-                src={w.video}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover"
-              />
+              <LazyVideo src={w.video} className="w-full h-full object-cover" />
             </div>
 
             {/* Header row */}
