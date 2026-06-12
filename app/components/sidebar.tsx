@@ -126,7 +126,7 @@ export default function Sidebar() {
   return (
     <>
       {/* ── Desktop sidebar ──────────────────────────────────────────────── */}
-      <aside className="hidden md:flex flex-col max-w-[20vw] w-full shrink-0 border-r border-[#dbd9d1] sticky top-0 h-screen p-5 overflow-hidden bg-[#f5f4ef]">
+      <aside className="hidden md:flex flex-col max-w-[16vw] w-full shrink-0 border-r border-[#dbd9d1] sticky top-0 h-screen p-5 overflow-hidden bg-[#f5f4ef]">
         <NavContent />
       </aside>
 
