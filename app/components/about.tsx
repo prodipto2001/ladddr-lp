@@ -1,3 +1,6 @@
+import BookCallButton from "./book-call-button";
+import StatsRow from "./stats-row";
+
 export default function About() {
   return (
     <section id="about" className="bg-[#f5f4ef] p-4 md:p-6 flex flex-col gap-4">
@@ -23,30 +26,13 @@ export default function About() {
 
       {/* Stats + CTAs on same row */}
       <div className="flex items-end justify-between gap-4 pt-1">
-        <div className="flex gap-6">
-          {[
-            { value: "30+", label: "projects shipped" },
-            { value: "3yr",  label: "in business" },
-            { value: "99",   label: "lighthouse avg" },
-          ].map((s) => (
-            <div key={s.label}>
-              <p className="text-[14px] font-bold">{s.value}</p>
-              <p className="text-[13px] text-[#888]">{s.label}</p>
-            </div>
-          ))}
-        </div>
+        <StatsRow />
 
         <div className="flex gap-3 items-center">
-          <a
-            href="#contact"
-            className="text-[14px] px-3 py-1 rounded-sm text-white transition-colors"
-            style={{ background: "#1a5c27" }}
-          >
-            book a call ↗
-          </a>
+          <BookCallButton href="#contact" label="Book a Call" className="hidden md:flex" />
           <a
             href="#works"
-            className="text-[14px] text-[#888] hover:text-[#1c1c1c] transition-colors py-1"
+            className="hidden md:block text-[14px] text-[#888] hover:text-[#1c1c1c] transition-colors py-1"
           >
             see works →
           </a>

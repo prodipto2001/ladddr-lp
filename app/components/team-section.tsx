@@ -4,21 +4,21 @@ const team = [
     handle: "@prodipto2001",
     role: "Desginer",
     location: "India",
-    image: "https://ik.imagekit.io/shutttr/Team/pradipto.JPG",
+    image: "/Team/pradipto.svg",
   },
   {
     name: "Joydeep",
     handle: "@joydeepsignha",
     role: "Full Stack Developer · Blockchain",
     location: "India",
-    image: "https://ik.imagekit.io/shutttr/Team/joydeep.gif",
+    image: "/Team/joydeepdithered.svg",
   },
   {
     name: "Soumya",
     handle: "@soumyamukherjee",
     role: "Frontend Developer",
     location: "India",
-    image: "https://ik.imagekit.io/shutttr/Team/soumya.jpg",
+    image: "/Team/soumya.svg",
   },
 ];
 
@@ -43,7 +43,7 @@ export default function TeamSection() {
                 src={member.image}
                 alt={member.name}
                 className="w-full h-full object-cover object-center scale-120"
-                style={{ filter: "grayscale(1) contrast(1.2) brightness(1.05)" }}
+                // style={{ filter: "grayscale(0) contrast(1.2) brightness(1.05)" }}
               />
             </div>
 

@@ -14,6 +14,7 @@ export default function CustomCursor() {
   const chipRef  = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!window.matchMedia("(pointer: fine)").matches) return;
     if (
       !posRef.current || !scaleRef.current ||
       !arrowRef.current || !handRef.current || !chipRef.current
@@ -83,7 +84,7 @@ export default function CustomCursor() {
   return (
     <div
       ref={posRef}
-      className="fixed top-0 left-0 pointer-events-none z-[9999] opacity-0"
+      className="fixed top-0 left-0 pointer-events-none z-[9999] opacity-0 [@media(pointer:coarse)]:!hidden"
       style={{ willChange: "transform" }}
     >
       <div

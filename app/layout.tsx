@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "ladddr. — design first. development studio.",
   description:
     "We are a design-first web development agency. From sketch to scale in weeks.",
+  icons: {
+    icon: [{ url: "/LDR_Logo.svg", type: "image/svg+xml", sizes: "any" }],
+  },
 };
 
 export default function RootLayout({

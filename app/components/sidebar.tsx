@@ -34,7 +34,7 @@ function NavContent({ onLinkClick }: { onLinkClick?: () => void }) {
     <div className="flex flex-col justify-between h-full">
       <div className="flex flex-col gap-6">
         <div>
-          <Image src="/LDR_Logo.svg" alt="ladddr" width={64} height={64} />
+          <Image src="/LDR_Logo.svg" alt="ladddr" width={64} height={64} className="hidden md:block" />
           <p className="text-[13px] text-[#888] leading-snug mt-1.5">
             design first.<br />development studio.
           </p>
@@ -131,8 +131,8 @@ export default function Sidebar() {
       </aside>
 
       {/* ── Mobile: fixed top bar with animated menu button ──────────────── */}
-      <div className="fixed top-0 left-0 right-0 h-10 z-50 md:hidden flex items-center justify-between px-4 bg-[#f5f4ef] border-b border-[#dbd9d1]">
-        <Image src="/LDR_Logo.svg" alt="ladddr" width={28} height={28} />
+      <div className="fixed top-0 left-0 right-0 h-14 z-50 md:hidden flex items-center justify-between px-4 bg-[#f5f4ef] border-b border-[#dbd9d1]">
+        <Image src="/LDR_Logo.svg" alt="ladddr" width={36} height={36} />
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
@@ -144,7 +144,7 @@ export default function Sidebar() {
 
       {/* ── Mobile: full-width drawer slides down from under top bar ─────── */}
       <aside
-        className={`fixed top-0 left-0 right-0 bottom-0 bg-[#f5f4ef] z-40 md:hidden flex flex-col pt-10 transition-transform duration-300 ease-out ${
+        className={`fixed top-0 left-0 right-0 bottom-[70px] bg-[#f5f4ef] z-40 md:hidden flex flex-col pt-14 transition-transform duration-300 ease-out ${
           open ? "translate-y-0" : "-translate-y-full"
         }`}
       >
