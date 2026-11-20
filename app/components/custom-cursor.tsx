@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 // Triangle arrow — Figma "Polygon 1", points up, rotated 42.52deg → upper-right tip
 const ARROW_PATH =
@@ -12,9 +13,14 @@ export default function CustomCursor() {
   const arrowRef = useRef<HTMLDivElement>(null);
   const handRef  = useRef<HTMLDivElement>(null);
   const chipRef  = useRef<HTMLDivElement>(null);
+  // v2 uses the native cursor. The html class gates the `cursor: none` rule
+  // in globals.css so it only applies while this component is active.
+  const disabled = usePathname().startsWith("/v2");
 
   useEffect(() => {
+    if (disabled) return;
     if (!window.matchMedia("(pointer: fine)").matches) return;
+    document.documentElement.classList.add("has-custom-cursor");
     if (
       !posRef.current || !scaleRef.current ||
       !arrowRef.current || !handRef.current || !chipRef.current
@@ -73,13 +79,16 @@ export default function CustomCursor() {
     window.addEventListener("mouseup",   onUp);
 
     return () => {
+      document.documentElement.classList.remove("has-custom-cursor");
       cancelAnimationFrame(raf);
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseleave", onLeave);
       window.removeEventListener("mousedown", onDown);
       window.removeEventListener("mouseup",   onUp);
     };
-  }, []);
+  }, [disabled]);
+
+  if (disabled) return null;
 
   return (
     <div

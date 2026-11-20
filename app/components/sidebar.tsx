@@ -17,6 +17,7 @@ const NAV = [
   },
   { label: "services", href: "#services" },
   { label: "process",  href: "#process" },
+  { label: "ways to work", href: "#ways-to-work" },
   { label: "clients",      href: "#clients" },
   { label: "testimonials", href: "#testimonials" },
   { label: "team",         href: "#team" },
@@ -51,7 +52,7 @@ function NavContent({ onLinkClick }: { onLinkClick?: () => void }) {
               <a
                 href={item.href}
                 onClick={onLinkClick}
-                className="text-[14px] text-[#888] hover:text-[#1c1c1c] transition-colors py-1 block"
+                className="text-[15px] md:text-[14px] text-[#888] hover:text-[#1c1c1c] transition-colors py-2 md:py-1 block"
               >
                 {item.label}
               </a>
@@ -62,7 +63,7 @@ function NavContent({ onLinkClick }: { onLinkClick?: () => void }) {
                       key={child.label}
                       href={child.href}
                       onClick={onLinkClick}
-                      className="text-[13px] text-[#aaa] hover:text-[#1c1c1c] transition-colors py-0.5 flex items-center gap-1.5"
+                      className="text-[14px] md:text-[13px] text-[#aaa] hover:text-[#1c1c1c] transition-colors py-1.5 md:py-0.5 flex items-center gap-1.5"
                     >
                       <span className="w-1.5 h-1.5 rounded-sm shrink-0" style={{ background: child.color }} />
                       {child.label}
@@ -148,7 +149,7 @@ export default function Sidebar() {
           open ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="flex-1 overflow-y-auto p-6 pt-8">
+        <div className="flex-1 overflow-y-auto overscroll-contain p-6 pt-8">
           <NavContent onLinkClick={() => setOpen(false)} />
         </div>
       </aside>

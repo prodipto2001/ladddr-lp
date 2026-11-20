@@ -3,7 +3,11 @@
 import { useEffect, useRef } from "react";
 import { animate } from "framer-motion";
 
-export default function LDRLogo() {
+export default function LDRLogo({
+  className = "w-full max-w-lg mx-auto select-none",
+}: {
+  className?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,9 +41,6 @@ export default function LDRLogo() {
 
         groups.forEach((g, i) => {
           g.style.cursor = "pointer";
-          g.style.transformBox = "fill-box";
-          // Base stays pinned — only the top travels down
-          g.style.transformOrigin = "center bottom";
 
           // Staggered entrance
           animate(
@@ -48,36 +49,50 @@ export default function LDRLogo() {
             { delay: i * 0.14, duration: 0.5, ease: [0.22, 1, 0.36, 1] }
           );
 
-          const onPress = () => {
-            // Instant snap — base fixed, top drops. No easing so it reads as
-            // mechanical travel, not squeeze.
-            animate(
-              g,
-              { scaleY: 0.82 },
-              { duration: 0.06, ease: "linear" }
-            );
-          };
+          // Key press: the letter is a stack of extruded layers (bottom -> top).
+          // Layer offset scales with its height in the stack, so the base stays
+          // put, the top face travels furthest, and the sides compress.
+          const layers = Array.from(g.children) as SVGElement[];
+          const DEPTH = 13; // svg units the top face travels
+          let pressed = false;
+          let progress = 0;
+          let current: ReturnType<typeof animate> | null = null;
 
-          const onRelease = () => {
-            // Strong spring with slight overshoot — letter pops back to full height
-            animate(g, { scaleY: 1 }, {
-              type: "spring",
-              stiffness: 600,
-              damping: 18,
-              mass: 0.5,
+          const render = (p: number) => {
+            progress = p;
+            const n = layers.length - 1;
+            layers.forEach((el, k) => {
+              el.style.transform = `translateY(${(DEPTH * p * k) / n}px)`;
             });
           };
 
-          g.addEventListener("mousedown", onPress);
-          g.addEventListener("mouseup", onRelease);
-          g.addEventListener("mouseleave", onRelease);
-          g.addEventListener("touchstart", onPress, { passive: true });
-          g.addEventListener("touchend", onRelease);
+          const run = (to: number, duration: number, ease: [number, number, number, number]) => {
+            current?.stop();
+            current = animate(progress, to, { duration, ease, onUpdate: render });
+          };
+
+          const onPress = () => {
+            if (pressed) return;
+            pressed = true;
+            run(1, 0.12, [0.33, 1, 0.68, 1]);
+          };
+
+          const onRelease = () => {
+            if (!pressed) return;
+            pressed = false;
+            // Starts from wherever the press got to, so quick clicks stay smooth
+            run(0, 0.3, [0.22, 1, 0.36, 1]);
+          };
+
+          g.addEventListener("pointerdown", onPress);
+          g.addEventListener("pointerup", onRelease);
+          g.addEventListener("pointercancel", onRelease);
+          g.addEventListener("pointerleave", onRelease);
         });
       });
   }, []);
 
   return (
-    <div ref={ref} className="w-full max-w-lg mx-auto select-none" />
+    <div ref={ref} className={className} />
   );
 }

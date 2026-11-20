@@ -39,7 +39,7 @@ export default function ContactSection() {
           <span className="text-[14px] text-[#888] shrink-0">email</span>
           <a
             href="mailto:hello@ladddr.com"
-            className="text-[14px] hover:text-[#39B54A] transition-colors text-right"
+            className="text-[14px] hover:text-[#39B54A] transition-colors text-right break-all min-w-0"
           >
             hello@ladddr.com ↗
           </a>
@@ -51,7 +51,7 @@ export default function ContactSection() {
             data-cal-link="shutttr.agency/15min"
             data-cal-config='{"layout":"month_view"}'
             onClick={openCal}
-            className="text-[14px] hover:text-[#39B54A] transition-colors text-right bg-transparent border-none p-0 font-[inherit]"
+            className="text-[14px] hover:text-[#39B54A] transition-colors text-right bg-transparent border-none p-0 font-[inherit] break-all min-w-0"
           >
             cal.com/shutttr.agency ↗
           </button>

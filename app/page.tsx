@@ -5,6 +5,7 @@ import BookCallButton from "./components/book-call-button";
 import WorksSection from "./components/works-section";
 import Services from "./components/services";
 import Process from "./components/process";
+import WaysToWork from "./components/ways-to-work";
 import ClientsSection from "./components/clients-section";
 import ContactSection from "./components/contact-section";
 import Testimonials from "./components/testimonials";
@@ -31,6 +32,8 @@ export default function Home() {
           <Services />
           <Hatch />
           <Process />
+          <Hatch />
+          <WaysToWork />
           <Hatch />
           <ClientsSection />
           <Hatch />

@@ -27,15 +27,15 @@ export default function TeamSection() {
     <section id="team" className="bg-[#f5f4ef] p-4 md:p-6 flex flex-col gap-6">
       <h2 className="text-[15px] font-medium text-[#1c1c1c]">team</h2>
 
-      <div className="grid grid-cols-3 gap-3 md:gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
         {team.map((member) => (
           <div
             key={member.name}
-            className="border border-[#dbd9d1] rounded-sm overflow-hidden"
+            className="border border-[#dbd9d1] rounded-sm overflow-hidden flex sm:block"
           >
             {/* Portrait */}
             <div
-              className="relative overflow-hidden bg-[#e8e6de]"
+              className="relative overflow-hidden bg-[#e8e6de] w-28 shrink-0 sm:w-auto"
               style={{ aspectRatio: "3 / 3.5" }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -48,16 +48,16 @@ export default function TeamSection() {
             </div>
 
             {/* Info */}
-            <div className="p-2.5 flex flex-col gap-1 border-t border-[#dbd9d1]">
+            <div className="p-3 sm:p-2.5 flex flex-col justify-center gap-1 border-l sm:border-l-0 sm:border-t border-[#dbd9d1] min-w-0 flex-1">
               <p className="text-[13px] font-bold text-[#1c1c1c] leading-tight truncate">
                 {member.name}
               </p>
-              <p className="text-[12px] text-[#888] leading-tight truncate">
+              <p className="text-[12px] text-[#888] leading-tight sm:truncate">
                 {member.role}
               </p>
-              <div className="flex items-center justify-between pt-0.5">
-                <span className="text-[9px] text-[#bbb]">{member.handle}</span>
-                <span className="text-[9px] text-[#bbb]">{member.location}</span>
+              <div className="flex flex-wrap items-center justify-between gap-x-2 pt-0.5">
+                <span className="text-[11px] sm:text-[9px] text-[#bbb]">{member.handle}</span>
+                <span className="text-[11px] sm:text-[9px] text-[#bbb]">{member.location}</span>
               </div>
             </div>
           </div>

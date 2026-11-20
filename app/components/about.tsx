@@ -25,7 +25,7 @@ export default function About() {
       </div>
 
       {/* Stats + CTAs on same row */}
-      <div className="flex items-end justify-between gap-4 pt-1">
+      <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-3 pt-1">
         <StatsRow />
 
         <div className="flex gap-3 items-center">

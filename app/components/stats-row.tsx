@@ -86,7 +86,7 @@ export default function StatsRow() {
   }, []);
 
   return (
-    <div ref={ref} className="flex gap-6">
+    <div ref={ref} className="flex flex-wrap gap-x-6 gap-y-3">
       {STATS.map((s) => (
         <div key={s.label}>
           <p className="text-[14px] font-bold">
